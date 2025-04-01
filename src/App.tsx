@@ -51,8 +51,6 @@ const App = () => {
           >
             <select
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleMoneyChange(e.target.value)}
-              bg="white"
-              mb={4}
             >
               <option value="">Select an amount...</option>
               <option value="ruby">Ruby (€4.50)</option>
