@@ -1,4 +1,5 @@
-import { Box, Grid } from "@chakra-ui/react";
+import Block from "@/components/ui/blocs/Block";
+import { Grid } from "@chakra-ui/react";
 import { useState } from "react";
 
 const GenerateBlocs = ({ countBlocs }: { countBlocs: number }) => {
@@ -20,26 +21,11 @@ const GenerateBlocs = ({ countBlocs }: { countBlocs: number }) => {
     const isBlocClicked = blocsClicked.includes(i);
 
     blocs.push(
-      <Box
+      <Block
+        isBlocClicked={isBlocClicked}
+        handleClick={handleClick}
+        index={i}
         key={i}
-        h="40px"
-        w="40px"
-        bgColor={isBlocClicked ? "#6D28D9" : "#18181B"}
-        borderRadius="md"
-        borderColor="#27272A"
-        borderWidth="2px"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        fontSize="lg"
-        onClick={() => handleClick(i)}
-        boxShadow="md"
-        transition="background-color 0.2s"
-        cursor="pointer"
-        _hover={{
-          bgColor: isBlocClicked ? "#18181B" : "#6D28D9",
-          transform: "scale(1.05)",
-        }}
       />
     );
   }
