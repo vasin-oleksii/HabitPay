@@ -1,22 +1,7 @@
-import {  Center, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import AppRouter from "./routes/AppRouter";
 
 const App = () => {
-  return (
-    <Flex flexDirection="column" alignItems="center" justifyContent="center" h="100vh">
-      <Center>
-        <VStack>
-
-        <Heading>Hello HabitPay 🦎</Heading>
-        <Text fontSize="lg">
-          HabitPay is a platform for tracking your habits.
-        </Text>
-        </VStack>
-      </Center>
-
-
-
-    </Flex>
-  );
+  return <AppRouter />;
 };
 
 export default App;
