@@ -1,5 +1,5 @@
-import Header from "@/components/header/Header";
 import { Flex } from "@chakra-ui/react";
+import GenerateBlocs from "./GenerateBlocs";
 
 const HomePage = () => {
   return (
@@ -9,7 +9,7 @@ const HomePage = () => {
       justifyContent="center"
       h="100vh"
     >
-      <Header />
+      <GenerateBlocs countBlocs={100} />
     </Flex>
   );
 };
