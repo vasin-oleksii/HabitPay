@@ -1,6 +1,7 @@
 import Block from "@/components/ui/blocs/Block";
 import { Grid } from "@chakra-ui/react";
 import { useState } from "react";
+import DayOfWeek from "./DayOfWeek";
 
 const GenerateBlocs = ({ countBlocs }: { countBlocs: number }) => {
   const [blocsClicked, setBlocsClicked] = useState<number[]>([]);
@@ -31,7 +32,14 @@ const GenerateBlocs = ({ countBlocs }: { countBlocs: number }) => {
   }
 
   return (
-    <Grid templateRows="repeat(7, 1fr)" gridAutoFlow="column" gap={4}>
+    <Grid
+      mt="4rem"
+      templateRows="repeat(7, 1fr)"
+      gridAutoFlow="column"
+      gap={4}
+      alignItems="center"
+    >
+      <DayOfWeek />
       {blocs}
     </Grid>
   );
