@@ -6,10 +6,18 @@ import { useState } from "react";
 
 const HomePage = () => {
   const [allHabits, setAllHabits] = useState<string[]>([]);
-  // const [currentHabit, setCurrentHabit] = useState<string>("");
+  const [currentHabit, setCurrentHabit] = useState<string>("");
 
   const addNewHabit = (habit: string) => {
     setAllHabits((prev) => [...prev, habit]);
+  };
+
+  const selectCurrentHabit = (habit: string) => {
+    setCurrentHabit(habit);
+  };
+
+  const deleteHabit = (habit: string) => {
+    setAllHabits((prev) => prev.filter((hab) => hab !== habit));
   };
 
   return (
@@ -20,7 +28,12 @@ const HomePage = () => {
       h="100vh"
     >
       <AddNewHabit handleClick={addNewHabit} />
-      <SelectHabit allHabits={allHabits} />
+      <SelectHabit
+        allHabits={allHabits}
+        handleClick={selectCurrentHabit}
+        handleDelete={deleteHabit}
+        currentHabit={currentHabit}
+      />
       <GenerateBlocs countBlocs={100} />
     </Flex>
   );

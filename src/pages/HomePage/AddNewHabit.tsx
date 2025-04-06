@@ -21,7 +21,7 @@ const AddNewHabit = ({
   return (
     <Flex alignItems="center" justifyContent="center" flexDir="row">
       <Input
-        bgColor="purple.900"
+        bgColor="purple.600"
         placeholder="Drink every day 🚰🐳"
         size="xl"
         value={inputValue}
