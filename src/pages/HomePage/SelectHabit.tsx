@@ -1,6 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 
 import { FaDeleteLeft } from "react-icons/fa6";
+import { Habit } from "./HomePage";
 
 const SelectHabit = ({
   allHabits,
@@ -8,15 +9,15 @@ const SelectHabit = ({
   currentHabit,
   handleDelete,
 }: {
-  allHabits: string[];
-  handleClick: (habit: string) => void;
-  currentHabit: string;
-  handleDelete: (habit: string) => void;
+  allHabits: Habit[];
+  handleClick: (habit: Habit) => void;
+  currentHabit: Habit;
+  handleDelete: (habit: number) => void;
 }) => {
   return (
     <Flex mt="4" flexDir="row" width="50vw" overflowX="auto">
       {allHabits.map((el, i) => {
-        const isCurrentClicked = currentHabit === el;
+        const isCurrentClicked = currentHabit.habit === el.habit;
 
         return (
           <Flex
@@ -34,14 +35,14 @@ const SelectHabit = ({
             justify="center"
             flexDir="row"
           >
-            <Text>{el}</Text>
+            <Text>{el.habit}</Text>
             {isCurrentClicked && (
               <Flex
                 ml="1"
                 _hover={{
                   color: "red.400",
                 }}
-                onClick={() => handleDelete(el)}
+                onClick={() => handleDelete(el.id)}
               >
                 <FaDeleteLeft />
               </Flex>

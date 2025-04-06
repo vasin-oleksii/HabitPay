@@ -4,20 +4,32 @@ import SelectHabit from "./SelectHabit";
 import AddNewHabit from "./AddNewHabit";
 import { useState } from "react";
 
-const HomePage = () => {
-  const [allHabits, setAllHabits] = useState<string[]>([]);
-  const [currentHabit, setCurrentHabit] = useState<string>("");
+export interface Habit {
+  habit: string;
+  data: Date;
+  streak: number[];
+  id: number;
+}
 
-  const addNewHabit = (habit: string) => {
+const HomePage = () => {
+  const [allHabits, setAllHabits] = useState<Habit[]>([]);
+  const [currentHabit, setCurrentHabit] = useState<Habit>({
+    habit: "Test me",
+    data: new Date(),
+    streak: [],
+    id: Math.random(),
+  });
+
+  const addNewHabit = (habit: Habit) => {
     setAllHabits((prev) => [...prev, habit]);
   };
 
-  const selectCurrentHabit = (habit: string) => {
+  const selectCurrentHabit = (habit: Habit) => {
     setCurrentHabit(habit);
   };
 
-  const deleteHabit = (habit: string) => {
-    setAllHabits((prev) => prev.filter((hab) => hab !== habit));
+  const deleteHabit = (id: number) => {
+    setAllHabits((prev) => prev.filter((hab) => hab.id !== id));
   };
 
   return (

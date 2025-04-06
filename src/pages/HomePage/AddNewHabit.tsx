@@ -1,10 +1,11 @@
 import { Button, Flex, Input } from "@chakra-ui/react";
 import { useState } from "react";
+import { Habit } from "./HomePage";
 
 const AddNewHabit = ({
   handleClick,
 }: {
-  handleClick: (inputValue: string) => void;
+  handleClick: (inputValue: Habit) => void;
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [addedWithSuccsful, setAddedWithSuccsful] = useState<boolean>(false);
@@ -13,7 +14,12 @@ const AddNewHabit = ({
     if (inputValue.length === 0) {
       return;
     }
-    handleClick(inputValue);
+    handleClick({
+      habit: inputValue,
+      data: new Date(),
+      streak: [],
+      id: Math.random(),
+    });
     setAddedWithSuccsful(true);
     setInputValue("");
   };
