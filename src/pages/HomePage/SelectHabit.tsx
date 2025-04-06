@@ -17,7 +17,7 @@ const SelectHabit = ({
   return (
     <Flex mt="4" flexDir="row" width="50vw" overflowX="auto">
       {allHabits.map((el, i) => {
-        const isCurrentClicked = currentHabit.habit === el.habit;
+        const isCurrentClicked = currentHabit.id === el.id;
 
         return (
           <Flex
