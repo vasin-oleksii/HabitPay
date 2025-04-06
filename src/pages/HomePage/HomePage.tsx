@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import GenerateBlocs from "./GenerateBlocs";
 import SelectHabit from "./SelectHabit";
 import AddNewHabit from "./AddNewHabit";
@@ -14,10 +14,10 @@ export interface Habit {
 const HomePage = () => {
   const [allHabits, setAllHabits] = useState<Habit[]>([]);
   const [currentHabit, setCurrentHabit] = useState<Habit>({
-    habit: "Test me",
+    habit: "",
     data: new Date(),
     streak: [],
-    id: Math.random(),
+    id: 0,
   });
 
   const addNewHabit = (habit: Habit) => {
@@ -46,7 +46,16 @@ const HomePage = () => {
         handleDelete={deleteHabit}
         currentHabit={currentHabit}
       />
-      <GenerateBlocs countBlocs={100} />
+
+      {currentHabit.id ? (
+        <GenerateBlocs
+          countBlocs={100}
+          currentHabit={currentHabit}
+          allHabits={allHabits}
+        />
+      ) : (
+        <Heading>Create & Choice one habit</Heading>
+      )}
     </Flex>
   );
 };
