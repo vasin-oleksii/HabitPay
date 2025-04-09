@@ -5,14 +5,13 @@ import DayOfWeek from "./DayOfWeek";
 import { Habit } from "./HomePage";
 
 const GenerateBlocs = ({
-  countBlocs,
   currentHabit,
   allHabits,
 }: {
-  countBlocs: number;
   currentHabit: Habit;
   allHabits: Habit[];
 }) => {
+  const DAYS_TO_SHOW = 100;
   const [blocsClicked, setBlocsClicked] = useState<number[]>([]);
 
   const blocs = [];
@@ -27,7 +26,7 @@ const GenerateBlocs = ({
     });
   };
 
-  for (let i = 0; i <= countBlocs; i++) {
+  for (let i = 0; i <= DAYS_TO_SHOW; i++) {
     const isBlocClicked = blocsClicked.includes(i);
 
     blocs.push(
@@ -39,6 +38,8 @@ const GenerateBlocs = ({
       />
     );
   }
+  console.log(currentHabit.streak);
+  console.log(allHabits);
 
   return (
     <Grid

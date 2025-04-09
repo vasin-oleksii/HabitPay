@@ -48,13 +48,11 @@ const HomePage = () => {
       />
 
       {currentHabit.id ? (
-        <GenerateBlocs
-          countBlocs={100}
-          currentHabit={currentHabit}
-          allHabits={allHabits}
-        />
+        <GenerateBlocs currentHabit={currentHabit} allHabits={allHabits} />
       ) : (
-        <Heading>Create & Choice one habit</Heading>
+        <Heading>
+          {!allHabits.length ? "Create &" : ""} Choice one habit
+        </Heading>
       )}
     </Flex>
   );
