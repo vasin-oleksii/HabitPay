@@ -1,19 +1,15 @@
-import HomePage from "@/pages/HomePage/HomePage";
+import { HabitsPage } from "@/pages/HabitsPage";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
-import { Route, Routes } from "react-router";
-
-import { Box } from "@chakra-ui/react";
+import { Route, Routes } from "react-router-dom";
 
 const AppRouter = () => {
   return (
-    <>
-      <Box as="main" height="100vh">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Box>
-    </>
+    <main className="min-h-screen bg-background">
+      <Routes>
+        <Route path="/" element={<HabitsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </main>
   );
 };
 

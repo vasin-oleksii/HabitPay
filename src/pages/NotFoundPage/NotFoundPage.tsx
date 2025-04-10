@@ -1,29 +1,22 @@
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const NotFoundPage = () => {
   return (
-    <Flex
-      alignItems="center"
-      justifyContent="center"
-      h="100vh"
-      flexDirection="column"
-    >
-      <Flex alignItems="center" justifyContent="center" flexDirection="row">
-        <Text color="teal.600" fontWeight="bold" fontSize="6xl">
-          404
-        </Text>
-        - Page Not Found
-        <Heading as="h1" fontSize="4xl" color="teal.600"></Heading>
-      </Flex>
-      <p>The page you are looking for does not exist.</p>
-      <Box mt="4">
-        <a href="/">
-          <Button colorPalette="teal" variant="outline">
-            Go back to Home
+    <div className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground p-4">
+      <div className="space-y-4 text-center">
+        <h1 className="text-6xl font-bold">404</h1>
+        <h2 className="text-2xl font-semibold">Страница не найдена</h2>
+        <p className="text-muted-foreground">
+          Извините, страница, которую вы ищете, не существует или была перемещена.
+        </p>
+        <Link to="/">
+          <Button>
+            Вернуться на главную
           </Button>
-        </a>
-      </Box>
-    </Flex>
+        </Link>
+      </div>
+    </div>
   );
 };
 
