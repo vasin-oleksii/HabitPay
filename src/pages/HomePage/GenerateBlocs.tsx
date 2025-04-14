@@ -17,6 +17,7 @@ const GenerateBlocs = ({
   const blocs = [];
 
   const handleClick = (i: number) => {
+    handleClickBlock(currentHabit.id, i);
     setBlocsClicked((prev) => {
       if (prev.includes(i)) {
         return prev.filter((bloc) => bloc !== i);
@@ -24,7 +25,6 @@ const GenerateBlocs = ({
         return [...prev, i];
       }
     });
-    handleClickBlock(currentHabit.id, i);
   };
 
   for (let i = 0; i <= DAYS_TO_SHOW; i++) {
@@ -32,13 +32,12 @@ const GenerateBlocs = ({
     const isBlocInStreak = currentHabit.streak.includes(i);
 
     blocs.push(
-      <Box onClick={() => handleClickBlock(currentHabit.id, i)} key={i}>
-        <Block
-          isBlocClicked={isBlocClicked || isBlocInStreak}
-          handleClick={handleClick}
-          index={i}
-        />
-      </Box>
+      <Block
+        isBlocClicked={isBlocClicked || isBlocInStreak}
+        handleClick={handleClick}
+        index={i}
+        key={i}
+      />
     );
   }
 

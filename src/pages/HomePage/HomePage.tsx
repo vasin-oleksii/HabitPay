@@ -2,7 +2,7 @@ import { Flex, Heading } from "@chakra-ui/react";
 import GenerateBlocs from "./GenerateBlocs";
 import SelectHabit from "./SelectHabit";
 import AddNewHabit from "./AddNewHabit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface Habit {
   habit: string;
@@ -19,6 +19,29 @@ const HomePage = () => {
     streak: [],
     id: 0,
   });
+
+  useEffect(() => {
+    const storedCurrentHabit = localStorage.getItem("currentHabit");
+    const storedHabits = localStorage.getItem("habits");
+    console.log("storedCurrentHabit", storedCurrentHabit);
+    console.log("storedHabits", storedHabits);
+    if (storedHabits) {
+      setAllHabits(JSON.parse(storedHabits));
+    }
+    if (storedCurrentHabit) {
+      setCurrentHabit(JSON.parse(storedCurrentHabit));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("habits", JSON.stringify(allHabits));
+    console.log("allHabits", allHabits);
+  }, [allHabits]);
+
+  useEffect(() => {
+    localStorage.setItem("currentHabit", JSON.stringify(currentHabit));
+    console.log("currentHabit", currentHabit);
+  }, [currentHabit]);
 
   const addNewHabit = (habit: Habit) => {
     setAllHabits((prev) => [...prev, habit]);
