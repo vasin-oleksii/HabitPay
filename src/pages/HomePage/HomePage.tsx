@@ -36,7 +36,6 @@ const HomePage = () => {
     setAllHabits((allHabitsPrev) =>
       allHabitsPrev.map((habit) => {
         if (habit.id === id) {
-          console.log({ ...habit, streak: [...habit.streak, updateStreak] });
           return { ...habit, streak: [...habit.streak, updateStreak] };
         }
 
@@ -63,7 +62,6 @@ const HomePage = () => {
       {currentHabit.id ? (
         <GenerateBlocs
           currentHabit={currentHabit}
-          allHabits={allHabits}
           handleClickBlock={addCompleteTaskInStack}
         />
       ) : (

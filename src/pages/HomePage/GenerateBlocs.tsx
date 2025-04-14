@@ -6,16 +6,11 @@ import { Habit } from "./HomePage";
 
 const GenerateBlocs = ({
   currentHabit,
-  allHabits,
   handleClickBlock,
 }: {
   currentHabit: Habit;
-  allHabits: Habit[];
   handleClickBlock: (id: number, updateStreak: number) => void;
 }) => {
-  const [actualInfoAboutHabit, setActualInfoAboutHabit] = useState(
-    allHabits.filter((habit) => habit.id === currentHabit.id)[0]
-  );
   const DAYS_TO_SHOW = 100;
   const [blocsClicked, setBlocsClicked] = useState<number[]>([]);
 
@@ -48,17 +43,8 @@ const GenerateBlocs = ({
   }
 
   useEffect(() => {
-    setActualInfoAboutHabit(
-      allHabits.filter((habit) => habit.id === currentHabit.id)[0]
-    );
-  }, [allHabits]);
-
-  useEffect(() => {
     setBlocsClicked([]);
   }, [currentHabit]);
-
-  console.log("ctualInfoAboutHabit");
-  console.log(actualInfoAboutHabit);
 
   return (
     <Grid
