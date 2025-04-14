@@ -29,11 +29,15 @@ const SelectHabit = ({
             mb="2"
             bgColor={isCurrentClicked ? "green.400" : "#6D28D9"}
             mr="2"
+            onKeyDown={(e) => {
+              if (e.code === "Enter") handleClick(el);
+            }}
             onClick={() => handleClick(el)}
             cursor="pointer"
             alignItems="center"
             justify="center"
             flexDir="row"
+            tabIndex={0}
           >
             <Text>{el.habit}</Text>
             {isCurrentClicked && (

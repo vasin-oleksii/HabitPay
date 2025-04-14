@@ -25,6 +25,10 @@ const Block = ({
       boxShadow="md"
       transition="background-color 0.2s"
       cursor="pointer"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.code === "Enter") handleClick(index);
+      }}
       _hover={{
         bgColor: isBlocClicked ? "#18181B" : "#6D28D9",
         transform: "scale(1.05)",
