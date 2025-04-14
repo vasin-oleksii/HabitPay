@@ -32,6 +32,19 @@ const HomePage = () => {
     setAllHabits((prev) => prev.filter((hab) => hab.id !== id));
   };
 
+  const addCompleteTaskInStack = (id: number, updateStreak: number) => {
+    setAllHabits((allHabitsPrev) =>
+      allHabitsPrev.map((habit) => {
+        if (habit.id === id) {
+          console.log({ ...habit, streak: [...habit.streak, updateStreak] });
+          return { ...habit, streak: [...habit.streak, updateStreak] };
+        }
+
+        return habit;
+      })
+    );
+  };
+
   return (
     <Flex
       flexDirection="column"
@@ -48,7 +61,11 @@ const HomePage = () => {
       />
 
       {currentHabit.id ? (
-        <GenerateBlocs currentHabit={currentHabit} allHabits={allHabits} />
+        <GenerateBlocs
+          currentHabit={currentHabit}
+          allHabits={allHabits}
+          handleClickBlock={addCompleteTaskInStack}
+        />
       ) : (
         <Heading>
           {!allHabits.length ? "Create &" : ""} Choice one habit

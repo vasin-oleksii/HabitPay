@@ -1,16 +1,21 @@
 import Block from "@/components/ui/blocs/Block";
-import { Grid } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Grid } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import DayOfWeek from "./DayOfWeek";
 import { Habit } from "./HomePage";
 
 const GenerateBlocs = ({
   currentHabit,
   allHabits,
+  handleClickBlock,
 }: {
   currentHabit: Habit;
   allHabits: Habit[];
+  handleClickBlock: (id: number, updateStreak: number) => void;
 }) => {
+  const [actualInfoAboutHabit, setActualInfoAboutHabit] = useState(
+    allHabits.filter((habit) => habit.id === currentHabit.id)[0]
+  );
   const DAYS_TO_SHOW = 100;
   const [blocsClicked, setBlocsClicked] = useState<number[]>([]);
 
@@ -24,22 +29,36 @@ const GenerateBlocs = ({
         return [...prev, i];
       }
     });
+    handleClickBlock(currentHabit.id, i);
   };
 
   for (let i = 0; i <= DAYS_TO_SHOW; i++) {
     const isBlocClicked = blocsClicked.includes(i);
+    const isBlocInStreak = currentHabit.streak.includes(i);
 
     blocs.push(
-      <Block
-        isBlocClicked={isBlocClicked}
-        handleClick={handleClick}
-        index={i}
-        key={i}
-      />
+      <Box onClick={() => handleClickBlock(currentHabit.id, i)} key={i}>
+        <Block
+          isBlocClicked={isBlocClicked || isBlocInStreak}
+          handleClick={handleClick}
+          index={i}
+        />
+      </Box>
     );
   }
-  console.log(currentHabit.streak);
-  console.log(allHabits);
+
+  useEffect(() => {
+    setActualInfoAboutHabit(
+      allHabits.filter((habit) => habit.id === currentHabit.id)[0]
+    );
+  }, [allHabits]);
+
+  useEffect(() => {
+    setBlocsClicked([]);
+  }, [currentHabit]);
+
+  console.log("ctualInfoAboutHabit");
+  console.log(actualInfoAboutHabit);
 
   return (
     <Grid
