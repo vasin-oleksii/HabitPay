@@ -33,7 +33,9 @@ const Block = ({
         bgColor: isBlocClicked ? "#18181B" : "#6D28D9",
         transform: "scale(1.05)",
       }}
-    ></Box>
+    >
+      {isBlocClicked ? index + 1 : ""}
+    </Box>
   );
 };
 
