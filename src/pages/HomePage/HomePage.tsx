@@ -12,26 +12,17 @@ export interface Habit {
 }
 
 const HomePage = () => {
-  const [allHabits, setAllHabits] = useState<Habit[]>([]);
-  const [currentHabit, setCurrentHabit] = useState<Habit>({
-    habit: "",
-    data: new Date(),
-    streak: [],
-    id: 0,
-  });
-
-  useEffect(() => {
-    const storedCurrentHabit = localStorage.getItem("currentHabit");
-    const storedHabits = localStorage.getItem("habits");
-    console.log("storedCurrentHabit", storedCurrentHabit);
-    console.log("storedHabits", storedHabits);
-    if (storedHabits) {
-      setAllHabits(JSON.parse(storedHabits));
+  const [allHabits, setAllHabits] = useState<Habit[]>(
+    JSON.parse(localStorage.getItem("habits") || "[]") || []
+  );
+  const [currentHabit, setCurrentHabit] = useState<Habit>(
+    JSON.parse(localStorage.getItem("currentHabit") || "{}") || {
+      habit: "",
+      data: new Date(),
+      streak: [],
+      id: 0,
     }
-    if (storedCurrentHabit) {
-      setCurrentHabit(JSON.parse(storedCurrentHabit));
-    }
-  }, []);
+  );
 
   useEffect(() => {
     localStorage.setItem("habits", JSON.stringify(allHabits));
