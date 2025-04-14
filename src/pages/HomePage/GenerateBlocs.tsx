@@ -1,5 +1,5 @@
 import Block from "@/components/ui/blocs/Block";
-import { Box, Grid } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import DayOfWeek from "./DayOfWeek";
 import { Habit } from "./HomePage";
