@@ -40,6 +40,7 @@ const AddNewHabit = ({
         onKeyDown={(e) => {
           if (e.code === "Enter") addNewHabit();
         }}
+        color="white"
       />
       <Button
         ml="4"
