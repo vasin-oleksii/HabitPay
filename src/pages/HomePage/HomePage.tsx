@@ -26,12 +26,10 @@ const HomePage = () => {
 
   useEffect(() => {
     localStorage.setItem("habits", JSON.stringify(allHabits));
-    console.log("allHabits", allHabits);
   }, [allHabits]);
 
   useEffect(() => {
     localStorage.setItem("currentHabit", JSON.stringify(currentHabit));
-    console.log("currentHabit", currentHabit);
   }, [currentHabit]);
 
   const addNewHabit = (habit: Habit) => {
